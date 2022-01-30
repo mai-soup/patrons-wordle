@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const word = "bonks";
     let guesses = [[]];
     let availableSpace = 1;
+    let finished = false;
 
     for (let i = 0; i < keys.length; i++) {
         keys[i].onclick = ({ target }) => {
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function input(code) {
+        if (finished) return;
         if (code == "enter") {
             submitGuess();
             return;
@@ -80,11 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`current guess: ${currentWord}`);
 
         if (currentWord === word) {
-            // window.alert("u got it");
+            finished = true;
         }
 
         if (guesses.length === 6) {
-            // window.alert("noob lol");
+            finished = true;
         }
 
         guesses.push([]);
