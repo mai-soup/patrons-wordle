@@ -59,6 +59,11 @@ header {
     min-height: 50px;
     font-size: 2rem;
     font-weight: bold;
+    text-transform: uppercase;
+    color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #keyboard-container {
