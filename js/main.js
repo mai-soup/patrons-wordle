@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < keys.length; i++) {
         keys[i].onclick = ({ target }) => {
             const key = target.getAttribute("data-key");
-
             input(key);
         };
     }
@@ -97,13 +96,20 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateGuess(letter) {
         const currentWord = getCurrentGuess();
 
-        if (currentWord && currentWord.length < 5) {
-            currentWord.push(letter);
+        if (currentWord) {
+            if (letter === "backspace" && currentWord.length !== 0) {
+                currentWord.pop();
+                const lastLetter = document.getElementById(String(availableSpace - 1));
+                availableSpace = availableSpace - 1;
+                lastLetter.textContent = "";
+            } else if (currentWord.length < 5) {
+                currentWord.push(letter);
 
-            const availableSpaceEl = document.getElementById(String(availableSpace));
-            availableSpace = availableSpace + 1;
+                const availableSpaceEl = document.getElementById(String(availableSpace));
+                availableSpace = availableSpace + 1;
 
-            availableSpaceEl.textContent = letter;
+                availableSpaceEl.textContent = letter;
+            }
         }
     }
 
