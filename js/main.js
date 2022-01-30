@@ -70,7 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             for (let i = 0; i < letters.length; i++) {
-                document.getElementById(letters.at(i).l).classList.add(letters.at(i).c);
+                const key = document.getElementById(letters.at(i).l);
+                key.classList.remove("misplaced");
+                key.classList.add(letters.at(i).c);
             }
         }, interval * 6);
 
@@ -78,11 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`current guess: ${currentWord}`);
 
         if (currentWord === word) {
-            window.alert("u got it");
+            // window.alert("u got it");
         }
 
         if (guesses.length === 6) {
-            window.alert("noob lol");
+            // window.alert("noob lol");
         }
 
         guesses.push([]);
@@ -102,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const lastLetter = document.getElementById(String(availableSpace - 1));
                 availableSpace = availableSpace - 1;
                 lastLetter.textContent = "";
-            } else if (currentWord.length < 5) {
+            } else if (currentWord.length < 5 && /^[a-z]$/.test(letter)) {
                 currentWord.push(letter);
 
                 const availableSpaceEl = document.getElementById(String(availableSpace));
