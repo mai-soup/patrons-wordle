@@ -1,3 +1,7 @@
+:root {
+    --animate-duration: 1000ms;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -84,12 +88,27 @@ header {
     border: 0;
     height: 58px;
     cursor: pointer;
-    background-color: darkslategrey;
+    background-color: dimgrey;
     color: gainsboro;
     flex-grow: 1;
     margin-right: 6px;
     border-radius: 4px;
     user-select: none;
+}
+
+.incorrect {
+    background-color: darkslategrey !important;
+    border-color: darkslategrey !important;
+}
+
+.correct {
+    background-color: green !important;
+    border-color: green !important;
+}
+
+.misplaced {
+    background-color: orange !important;
+    border-color: orange !important;
 }
 
 .keyboard-row button.wide-button {
